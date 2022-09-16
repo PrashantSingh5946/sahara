@@ -8,7 +8,6 @@ import { logout } from "../util/firebase-util";
 
 export default function Navbar() {
   let [user, setUser] = useContext(UserContext);
-  console.log(user);
   return (
     <div className={styles["navbar"]}>
       <div className={styles["logo"]}>

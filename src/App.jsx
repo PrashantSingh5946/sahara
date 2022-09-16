@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     //Observer
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in
         setUser(user);
@@ -25,6 +25,7 @@ function App() {
         setUser(null);
       }
     });
+    return unsubscribe;
   }, []);
 
   return (
