@@ -1,83 +1,111 @@
-import { css } from '@emotion/react'
-import { useState, useEffect, useRef } from 'react';
-import SliderContent from './SliderContent';
-import Arrow from './Arrow'
-import Slide from './Slide';
-import ControlBar from './ControlBar';
+import { css } from "@emotion/react";
+import { useState, useEffect, useRef } from "react";
+import SliderContent from "./SliderContent";
+import Arrow from "./Arrow";
+import Slide from "./Slide";
+import ControlBar from "./ControlBar";
 
 const getWidth = window.innerWidth;
 function Slider(props) {
-  const SliderCss = css`overflow:hidden;aspect-ratio: 19/11;`;
-  const { slides,transitionTime,transitionInterval } = props;
+  const SliderCss = css`
+    overflow: hidden;
+    aspect-ratio: 19/11;
+  `;
+  const { slides, transitionTime, transitionInterval } = props;
 
-  const [state, setState] = useState(
-    {
-      "activeIndex": 0,
-      "transition": transitionTime,
-      "inTransition":false,
-      "width": getWidth,
-      "translate": -getWidth,
-      "_slides":[3,0,1]
-    })
+  const [state, setState] = useState({
+    activeIndex: 0,
+    transition: transitionTime,
+    inTransition: false,
+    width: getWidth,
+    translate: -getWidth,
+    _slides: [3, 0, 1],
+  });
 
-  const stateRef= useRef({});
-  const nextRef= useRef({});
+  const stateRef = useRef({});
+  const nextRef = useRef({});
   stateRef.current = state;
-  
-  
+
   const prevSlide = () => {
     if (!state.inTransition) {
-      setState({...state,inTransition:true,transition:transitionTime})
+      setState({ ...state, inTransition: true, transition: transitionTime });
       var newIndex = 0;
       if (state.activeIndex) {
-        newIndex = state.activeIndex - 1
-      }
-      else {
+        newIndex = state.activeIndex - 1;
+      } else {
         newIndex = slides.length - 1;
-
       }
-      setState({ ...state, activeIndex: newIndex, translate: 0 ,transition:transitionTime,inTransition:true})
-      switchPositions(newIndex)
+      setState({
+        ...state,
+        activeIndex: newIndex,
+        translate: 0,
+        transition: transitionTime,
+        inTransition: true,
+      });
+      switchPositions(newIndex);
     }
-  }
+  };
   const nextSlide = () => {
     if (!state.inTransition) {
-      setState({ ...state, translate: state.width * -2, activeIndex: (state.activeIndex + 1) % slides.length,transition:transitionTime,inTransition:true })
-      switchPositions((state.activeIndex + 1) % slides.length)
+      setState({
+        ...state,
+        translate: state.width * -2,
+        activeIndex: (state.activeIndex + 1) % slides.length,
+        transition: transitionTime,
+        inTransition: true,
+      });
+      switchPositions((state.activeIndex + 1) % slides.length);
     }
-  }
+  };
 
   const switchPositions = (index) => {
     //setState({...stateRef.current,inTransition:true})
     if (index == 0) {
-      setTimeout(() => { setState({ ...stateRef.current, translate: -stateRef.current.width,inTransition:false,_slides:[3, 0, 1],transition:0 }); }, transitionTime*1000)
+      setTimeout(() => {
+        setState({
+          ...stateRef.current,
+          translate: -stateRef.current.width,
+          inTransition: false,
+          _slides: [3, 0, 1],
+          transition: 0,
+        });
+      }, transitionTime * 1000);
+    } else {
+      setTimeout(() => {
+        setState({
+          ...stateRef.current,
+          translate: -stateRef.current.width,
+          inTransition: false,
+          _slides: [index - 1, index, (index + 1) % slides.length],
+          transition: 0,
+        });
+      }, transitionTime * 1000);
     }
-    else {
-      setTimeout(() => { setState({ ...stateRef.current, translate: -stateRef.current.width,inTransition:false,_slides:[index - 1, index, (index + 1) % slides.length],transition:0})}, transitionTime*1000)
-    }
-
-  }
-  nextRef.current=nextSlide;
-  useEffect(()=>{
+  };
+  nextRef.current = nextSlide;
+  useEffect(() => {
     const play = () => {
       nextRef.current();
-  }
-    window.onresize = ()=>{setState({...stateRef.current,width:getWidth,translate:-getWidth})}
+    };
+    window.onresize = () => {
+      setState({ ...stateRef.current, width: getWidth, translate: -getWidth });
+    };
     let id = setInterval(play, 5000);
-    return () =>
-    {
+    return () => {
       clearInterval(id);
-    }
-  },[state.activeIndex])
-
+    };
+  }, [state.activeIndex]);
 
   return (
     <div className="Slider" css={SliderCss}>
-      <SliderContent translate={state.translate} transition={state.transition} width={state.width} >
-        {
-          state._slides.map((slide) => <Slide slide={slides[slide]} key={slide} ></Slide>)
-        }
-
+      <SliderContent
+        translate={state.translate}
+        transition={state.transition}
+        width={state.width}
+      >
+        {state._slides.map((slide) => (
+          <Slide slide={slides[slide]} key={slide}></Slide>
+        ))}
       </SliderContent>
       {/* <Arrow direction="left" handleClick={prevSlide} />
       <Arrow direction="right" handleClick={nextSlide} />
@@ -85,7 +113,5 @@ function Slider(props) {
     </div>
   );
 }
-
-
 
 export default Slider;

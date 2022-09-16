@@ -1,0 +1,8 @@
+.container {
+  width: 30px;
+}
+
+.count {
+  position: absolute;
+  transform: translate(-20px, 10px);
+}

@@ -5,6 +5,7 @@ import logo from "../src/assets/logo.jpg";
 import { useContext } from "react";
 import { UserContext } from "../contexts/userContext/userContext";
 import { logout } from "../util/firebase-util";
+import CartIcon from "./CartIcon";
 
 export default function Navbar() {
   let [user, setUser] = useContext(UserContext);
@@ -28,6 +29,9 @@ export default function Navbar() {
           Sign Out
         </Link>
       )}
+      <Link onClick={() => {}}>
+        <CartIcon count="9"/>
+      </Link>
     </div>
   );
 }

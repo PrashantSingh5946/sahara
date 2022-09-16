@@ -14,10 +14,12 @@
     "firebase": "^9.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.4.0"
+    "react-router-dom": "^6.4.0",
+    "vite-plugin-svgr": "^2.2.1"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.10.2",
+    "@honkhonk/vite-plugin-svgr": "^1.1.0",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.1.0",
