@@ -1,5 +1,5 @@
 .cart-popup {
-  width: 200px;
+  width: 0px;
   background: #fff;
   position: relative;
   height: 0px;
@@ -12,7 +12,7 @@
   position: absolute;
   background: #333;
   z-index: 10;
-  margin: 55px -234px;
+  margin: 40px -310px;
   padding: 5px;
 }
 

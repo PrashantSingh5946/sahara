@@ -1,6 +1,6 @@
 import React from "react";
 import { ReactComponent as ShoppingBag } from "../src/assets/shopping-bag.svg";
-import styles from "./Carticon.module.css"
+import styles from "./CartIcon.module.css"
 
 export default function CartIcon(props) {
   return (
