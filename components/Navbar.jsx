@@ -10,8 +10,10 @@ export default function Navbar() {
         <img src={logo} alt="logo image"></img>
         <h2>Stylish Clothing</h2>
       </div>
+
       <Link to={"/"}>Home</Link>
       <Link to={"/shop"}>Shop</Link>
+      <Link to={"/sign"}>SignIn</Link>
     </div>
   );
 }
