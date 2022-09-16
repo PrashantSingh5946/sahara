@@ -1,0 +1,6 @@
+.home-container {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: black;
+  padding: 20px;
+}
