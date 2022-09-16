@@ -5,8 +5,28 @@ import Shop from "../components/Shop";
 import Navbar from "../components/Navbar";
 import "./styles/styles.css";
 import SignInAndUp from "../components/SignInAndUp";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../util/firebase-util";
+import { useEffect } from "react";
+import { useContext } from "react";
+import { UserContext } from "../contexts/userContext/userContext";
 
 function App() {
+  const [user, setUser] = useContext(UserContext);
+
+  useEffect(() => {
+    //Observer
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in
+        setUser(user);
+      } else {
+        // User is signed out
+        setUser(null);
+      }
+    });
+  }, []);
+
   return (
     <div className="App">
       <Navbar></Navbar>

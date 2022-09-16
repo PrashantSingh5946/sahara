@@ -2,8 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./Navbar.module.css";
 import logo from "../src/assets/logo.jpg";
+import { useContext } from "react";
+import { UserContext } from "../contexts/userContext/userContext";
+import { logout } from "../util/firebase-util";
 
 export default function Navbar() {
+  let [user, setUser] = useContext(UserContext);
+  console.log(user);
   return (
     <div className={styles["navbar"]}>
       <div className={styles["logo"]}>
@@ -13,7 +18,17 @@ export default function Navbar() {
 
       <Link to={"/"}>Home</Link>
       <Link to={"/shop"}>Shop</Link>
-      <Link to={"/sign"}>SignIn</Link>
+      {!user ? (
+        <Link to={"/sign"}>SignIn</Link>
+      ) : (
+        <Link
+          onClick={async () => {
+            await logout();
+          }}
+        >
+          Sign Out
+        </Link>
+      )}
     </div>
   );
 }
