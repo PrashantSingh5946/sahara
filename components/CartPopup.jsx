@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { CartContext } from "../contexts/cartContext/cartContext";
 
 export default function CartPopup(props) {
+
   let [cartState,setCartState] = useContext(CartContext);
 
   return (
