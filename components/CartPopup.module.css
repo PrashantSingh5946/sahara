@@ -1,0 +1,30 @@
+.cart-popup {
+  width: 200px;
+  background: #fff;
+  position: relative;
+  height: 0px;
+}
+
+.cart-popup .item-list {
+  width: 300px;
+  min-height: 155px;
+  max-height: 400px;
+  position: absolute;
+  background: #333;
+  z-index: 10;
+  margin: 55px -234px;
+  padding: 5px;
+}
+
+.cart-popup .item-list .items{
+min-height: 50px;
+}
+
+.cart-popup button {
+  background: white;
+  width: 100%;
+  color: black;
+  padding: 20px 20px;
+  border: none;
+  font-size: medium;
+}
