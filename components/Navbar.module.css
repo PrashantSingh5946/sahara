@@ -1,0 +1,43 @@
+@font-face {
+    font-family: myFirstFont;
+    src: url(../src/assets/Yellowtail-Regular.ttf);
+}
+  
+h2 {
+    font-family: myFirstFont;
+    color: white;
+    font-weight: 100;
+}
+
+.navbar {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #000;
+  height: 72px;
+  padding: 12px 20px;
+}
+
+.navbar .logo {
+  margin: 0px 10px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar .logo h2{
+    font-family: myFirstFont;
+    color: white;
+    margin: 0px 20px;
+}
+
+.navbar img {
+  height: 48px;
+}
+
+.navbar a{
+  height: auto;
+  color: aliceblue;
+  text-decoration: none;
+  margin: 0px 20px;
+}
