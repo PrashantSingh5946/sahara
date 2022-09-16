@@ -9,7 +9,7 @@ export default function CartContextProvider(props) {
     products: [],
   });
   return (
-    <CartContext.Provider value={{ cartState, setCartState }}>
+    <CartContext.Provider value={[cartState, setCartState]}>
       {props.children}
     </CartContext.Provider>
   );

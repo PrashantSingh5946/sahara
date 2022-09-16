@@ -9,9 +9,9 @@ import CartIcon from "./CartIcon";
 import CartPopup from "./CartPopup";
 
 export default function Navbar() {
-  let [user,setUser] = useContext(UserContext);
+  let [user, setUser] = useContext(UserContext);
 
-  let { cartState, setCartState } = useContext(CartContext);
+  let [cartState, setCartState] = useContext(CartContext);
 
   let cartTogglehandler = () => {
     setCartState((cartState) => ({
@@ -30,7 +30,7 @@ export default function Navbar() {
       <Link to={"/"}>HOME</Link>
       <Link to={"/shop"}>SHOP</Link>
       <div className={styles["right"]}>
-        {user ?  (
+        {user ? (
           <Link
             onClick={async () => {
               await logout();
@@ -39,9 +39,9 @@ export default function Navbar() {
           >
             SIGN OUT
           </Link>
-        ):(
+        ) : (
           <Link to={"/sign"}>SIGN IN</Link>
-        ) }
+        )}
         <Link
           onClick={() => {
             cartTogglehandler();
