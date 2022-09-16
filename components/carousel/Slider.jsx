@@ -7,7 +7,7 @@ import ControlBar from './ControlBar';
 
 const getWidth = window.innerWidth;
 function Slider(props) {
-  const SliderCss = css`overflow:hidden;`;
+  const SliderCss = css`overflow:hidden;aspect-ratio: 19/11;`;
   const { slides,transitionTime,transitionInterval } = props;
 
   const [state, setState] = useState(
@@ -79,9 +79,9 @@ function Slider(props) {
         }
 
       </SliderContent>
-      <Arrow direction="left" handleClick={prevSlide} />
+      {/* <Arrow direction="left" handleClick={prevSlide} />
       <Arrow direction="right" handleClick={nextSlide} />
-      <ControlBar state={state} slides={slides}></ControlBar>
+      <ControlBar state={state} slides={slides}></ControlBar> */}
     </div>
   );
 }
