@@ -6,17 +6,17 @@ import styles from "./ProductCard.module.css";
 
 export default function ProductCard({ id, name, imageUrl, price }) {
   let [cartState, setCartState] = React.useContext(CartContext);
-  let [ledger, setLedger] = useState([]);
 
   let addToBag = (identifier) => {
     setCartState(() => ({
       ...cartState,
       products: [...cartState.products, identifier],
+      ledger: generateArray([...cartState.products,identifier]),
     }));
   };
 
   useEffect(() => {
-    setLedger(generateArray(cartState.products));
+    console.log(generateArray(cartState.products));
   }, [cartState]);
 
   //helpers
@@ -40,6 +40,8 @@ export default function ProductCard({ id, name, imageUrl, price }) {
         myArray.push({ id: arr[i], count: 1 });
       }
     }
+
+    return myArray;
   };
 
   return (

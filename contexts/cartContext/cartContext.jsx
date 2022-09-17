@@ -7,6 +7,7 @@ export default function CartContextProvider(props) {
   const [cartState, setCartState] = useState({
     isCartVisible: false,
     products: [],
+    ledger:[],
   });
   return (
     <CartContext.Provider value={[cartState, setCartState]}>
