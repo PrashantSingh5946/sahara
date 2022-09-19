@@ -3,12 +3,10 @@ import styles from "./CheckoutPage.module.css";
 import ItemRow from "./ItemRow";
 import { useContext } from "react";
 import { CartContext } from "../contexts/cartContext/cartContext";
-import { ProductContext } from "../contexts/productContext/productContext";
 export default function CheckoutPage() {
+  let context = useContext(CartContext);
+  let { cartItems } = context;
 
-    let [cartState,]= useContext(CartContext);
-    const [products,] = useContext(ProductContext);
-    let {ledger} = cartState;
   return (
     <div className={styles["container"]}>
       <div className={styles["heading-row"]}>
@@ -17,11 +15,16 @@ export default function CheckoutPage() {
       </div>
       <hr />
       <div className={styles["list-item"]}>
-        {
-            ledger.map((item)=><ItemRow  key={item.id} id={item.id} imageUrl={products[item.id-1].imageUrl} name={products[item.id-1].name} price={products[item.id-1].price}  quantity={item.count}></ItemRow>)
-        }
-        
-        
+        {cartItems.map((item) => (
+          <ItemRow
+            key={item.id}
+            id={item.id}
+            imageUrl={item.imageUrl}
+            name={item.name}
+            price={item.price}
+            quantity={item.quantity}
+          ></ItemRow>
+        ))}
       </div>
     </div>
   );

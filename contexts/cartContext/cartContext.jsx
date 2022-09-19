@@ -5,9 +5,10 @@ export const CartContext = createContext({
   cartItems: [],
   addToCart: () => {},
   togglePopupVisibility: () => {},
+  clearItem: (id) => {},
   isPopupVisible: false,
-  total:0,
-  totalNoOfItems:0,
+  total: 0,
+  totalNoOfItems: 0,
 });
 
 export default function CartContextProvider(props) {
@@ -42,6 +43,10 @@ export default function CartContextProvider(props) {
     }
   };
 
+  const clearItem = (id) => {
+    setCartItems(cartItems.filter((cartItem) => cartItem.id !== id));
+  };
+
   const togglePopupVisibility = () => {
     setIsPopVisible((prevState) => !prevState);
   };
@@ -50,6 +55,7 @@ export default function CartContextProvider(props) {
     cartItems,
     addToCart,
     togglePopupVisibility,
+    clearItem,
     isPopupVisible,
     total,
     totalNoOfItems,

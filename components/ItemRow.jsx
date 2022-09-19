@@ -4,22 +4,8 @@ import { useContext } from "react";
 import { CartContext } from "../contexts/cartContext/cartContext";
 
 export default function ItemRow({ id, imageUrl, name, quantity, price }) {
-
-  let [cartState,setCartState] = useContext(CartContext);
-
-  const removeItem = (id) =>{
-    console.log(cartState);
-    console.log(cartState.ledger);
-  
-    setCartState((prevState) => { 
-      return(
-        {
-          ...prevState, ledger:[...prevState.ledger.filter((item) => item.id!=id)],
-          products:[...prevState.products.filter((item) => item!=id)]
-        }
-      )
-    })
-  } 
+  let context = useContext(CartContext);
+  const { clearItem } = context;
 
   return (
     <div className={styles["wrapper"]}>
@@ -31,7 +17,13 @@ export default function ItemRow({ id, imageUrl, name, quantity, price }) {
         <span>
           {price} {"$"}
         </span>{" "}
-        <span onClick={()=>{removeItem(id)}}>Remove </span>
+        <span
+          onClick={() => {
+            clearItem(id);
+          }}
+        >
+          Remove{" "}
+        </span>
       </div>
     </div>
   );
