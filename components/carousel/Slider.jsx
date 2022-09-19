@@ -1,9 +1,7 @@
 import { css } from "@emotion/react";
 import { useState, useEffect, useRef } from "react";
 import SliderContent from "./SliderContent";
-import Arrow from "./Arrow";
 import Slide from "./Slide";
-import ControlBar from "./ControlBar";
 
 const getWidth = window.innerWidth;
 function Slider(props) {
@@ -22,6 +20,11 @@ function Slider(props) {
     _slides: [3, 0, 1],
   });
 
+  useEffect(()=>{
+    window.addEventListener('resize',() => {
+      setState({...state,width:getWidth,translate:-getWidth})
+    })
+  },[])
   const stateRef = useRef({});
   const nextRef = useRef({});
   stateRef.current = state;
@@ -59,7 +62,6 @@ function Slider(props) {
   };
 
   const switchPositions = (index) => {
-    //setState({...stateRef.current,inTransition:true})
     if (index == 0) {
       setTimeout(() => {
         setState({
