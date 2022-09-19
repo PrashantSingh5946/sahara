@@ -1,6 +1,6 @@
 import React from "react";
 import ProductCard from "./ProductCard";
-import styles from "./PreviewCategory.module.css"
+import styles from "./PreviewCategory.module.css";
 
 export default function PreviewCategory({ title, items }) {
   return (
@@ -9,9 +9,10 @@ export default function PreviewCategory({ title, items }) {
         <h2>{title.toUpperCase()}</h2>
       </div>
       <div className={styles["container-items"]}>
-        {items.map((product,index) => (
-          index<4 && <ProductCard {...product}></ProductCard>
-        ))}
+        {items.map(
+          (product, index) =>
+            index < 4 && <ProductCard key={index} product={product}></ProductCard>
+        )}
       </div>
     </>
   );
