@@ -18,7 +18,7 @@ export default function CheckoutPage() {
       <hr />
       <div className={styles["list-item"]}>
         {
-            ledger.map((item)=><ItemRow  key={item.id} imageUrl={products[item.id-1].imageUrl} name={products[item.id-1].name} price={products[item.id-1].price}  quantity={item.count}></ItemRow>)
+            ledger.map((item)=><ItemRow  key={item.id} id={item.id} imageUrl={products[item.id-1].imageUrl} name={products[item.id-1].name} price={products[item.id-1].price}  quantity={item.count}></ItemRow>)
         }
         
         
