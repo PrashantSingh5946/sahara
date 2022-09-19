@@ -5,6 +5,6 @@ export default function CartItem(props) {
 
     let [products,] = useContext(ProductContext);
   return (
-    <div><img src={products[props.id-1].imageUrl}/>{products[props.id-1].name}<span>{props.count}</span></div>
+    <div><img src={products[props.id-1].imageUrl}/>{products[props.id-1].name}<span>{"    "}{props.count}</span></div>
   )
 }

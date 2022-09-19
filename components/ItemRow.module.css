@@ -1,4 +1,24 @@
-.row span{
-    padding: 30px;
-    color: white;
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.row span {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.row img {
+  width: 280px;
 }

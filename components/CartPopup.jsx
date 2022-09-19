@@ -13,7 +13,7 @@ export default function CartPopup(props) {
   return (
     <div className={styles["cart-popup"]}>
       <div className={styles["item-list"]}>
-        <div>No of items x {ledger.length}</div>
+        <div>Types of items x {ledger.length}</div>
         <hr />
         <div className={styles["items"]}>
           {ledger.map((ledger) => (

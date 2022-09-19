@@ -1,21 +1,24 @@
-.container{
-    padding: 170px;
+.container {
+  padding: 170px;
 }
 
-.heading-row span{
-    padding: 74px 115px 39px;
+.heading-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.heading-row span {
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-.row span{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }

@@ -23,9 +23,9 @@
 }
 
 .cart-popup button {
-  background: white;
+  background: black;
   width: 100%;
-  color: black;
+  color: white;
   padding: 20px 20px;
   border: none;
   font-size: medium;
