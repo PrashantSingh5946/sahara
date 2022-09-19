@@ -11,14 +11,9 @@ import CartPopup from "./CartPopup";
 export default function Navbar() {
   let [user, setUser] = useContext(UserContext);
 
-  let [cartState, setCartState] = useContext(CartContext);
+  let context = useContext(CartContext);
 
-  let cartTogglehandler = () => {
-    setCartState((cartState) => ({
-      ...cartState,
-      isCartVisible: !cartState.isCartVisible,
-    }));
-  };
+
 
   return (
     <div className={styles["navbar"]}>
@@ -47,10 +42,10 @@ export default function Navbar() {
             cartTogglehandler();
           }}
         >
-          <CartIcon count={cartState.products.length} />
+          <CartIcon count={0} />
         </Link>
       </div>
-      {cartState.isCartVisible && <CartPopup />}
+      {true && <CartPopup />}
     </div>
   );
 }

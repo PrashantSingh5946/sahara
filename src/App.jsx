@@ -9,7 +9,7 @@ import CheckoutPage from "../components/CheckoutPage";
 function App() {
   return (
     <div className="App">
-      {/* <Navbar></Navbar> */}
+      <Navbar></Navbar>
       <div className="page-content">
         <Routes>
           <Route path="/" element={<Home />} />

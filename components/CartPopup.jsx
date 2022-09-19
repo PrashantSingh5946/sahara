@@ -6,27 +6,27 @@ import CartItem from "./CartItem";
 import { Link } from "react-router-dom";
 
 export default function CartPopup(props) {
-  let [cartState] = useContext(CartContext);
-  const { ledger } = cartState;
-  console.log(ledger);
+  let context = useContext(CartContext);
+  // const { ledger } = cartState;
+  // console.log(ledger);
 
   return (
     <div className={styles["cart-popup"]}>
       <div className={styles["item-list"]}>
-        <div>Types of items x {ledger.length}</div>
+        <div>Types of items x {0}</div>
         <hr />
         <div className={styles["items"]}>
-          {ledger.map((ledger) => (
+          {/* {ledger.map((ledger) => (
             <CartItem
               key={ledger.id}
               id={ledger.id}
               count={ledger.count}
             ></CartItem>
-          ))}
+          ))} */}
         </div>
         <button style={{ color: "black" }}>
           <Link to={"/checkout"}>
-            GO TO CHECKOUT ({cartState.products.length})
+            GO TO CHECKOUT ({0})
           </Link>
         </button>
       </div>
