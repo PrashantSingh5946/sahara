@@ -1,0 +1,21 @@
+.container{
+    padding: 170px;
+}
+
+.heading-row span{
+    padding: 74px 115px 39px;
+
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.row span{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
