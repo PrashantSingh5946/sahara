@@ -12,8 +12,7 @@ export default function Navbar() {
   let [user, setUser] = useContext(UserContext);
 
   let context = useContext(CartContext);
-
-
+  let { cartItems, isPopupVisible, togglePopupVisibility } = context;
 
   return (
     <div className={styles["navbar"]}>
@@ -39,13 +38,13 @@ export default function Navbar() {
         )}
         <Link
           onClick={() => {
-            cartTogglehandler();
+            togglePopupVisibility();
           }}
         >
-          <CartIcon count={0} />
+          <CartIcon count={cartItems.length} />
         </Link>
       </div>
-      {true && <CartPopup />}
+      {isPopupVisible && <CartPopup />}
     </div>
   );
 }

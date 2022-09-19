@@ -4,11 +4,14 @@ import { createContext, useState } from "react";
 export const CartContext = createContext({
   cartItems: [],
   addToCart: () => {},
+  togglePopupVisibility: () => {},
+  isPopupVisible: false,
 });
 
 export default function CartContextProvider(props) {
   //state
   const [cartItems, setCartItems] = useState([]);
+  const [isPopupVisible, setIsPopVisible] = useState(false);
 
   //methods
   const addToCart = (product) => {
@@ -24,9 +27,16 @@ export default function CartContextProvider(props) {
     }
   };
 
+  const togglePopupVisibility = () =>
+  {
+    setIsPopVisible((prevState) => !prevState);
+  }
+
   const value = {
     cartItems,
     addToCart,
+    togglePopupVisibility,
+    isPopupVisible,
   };
 
   return (
