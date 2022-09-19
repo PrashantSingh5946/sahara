@@ -1,0 +1,9 @@
+.cart-item {
+  display: flex;
+  align-items: center;
+  padding: 2px;
+}
+
+.cart-item span{
+    padding: 5px 10px;
+}

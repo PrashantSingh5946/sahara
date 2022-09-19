@@ -7,25 +7,24 @@ import { Link } from "react-router-dom";
 
 export default function CartPopup(props) {
   let context = useContext(CartContext);
-  let {cartItems} = context;
+  let {cartItems,total,totalNoOfItems} = context;
 
   return (
     <div className={styles["cart-popup"]}>
       <div className={styles["item-list"]}>
-        <div>Types of items x {0}</div>
+        <div>{totalNoOfItems} items</div>
         <hr />
         <div className={styles["items"]}>
           {cartItems.map((cartItem) => (
             <CartItem
               key={cartItem.id}
-              id={cartItem.id}
-              count={cartItem.count}
+              {...cartItem}
             ></CartItem>
           ))}
         </div>
         <button style={{ color: "black" }}>
           <Link to={"/checkout"}>
-            GO TO CHECKOUT ({0})
+            GO TO CHECKOUT ({total} $)
           </Link>
         </button>
       </div>

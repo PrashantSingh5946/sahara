@@ -1,10 +1,9 @@
-import React, {useContext} from 'react'
-import { ProductContext } from "../contexts/productContext/productContext";
+import React from 'react'
+import styles from "./CartItem.module.css"
 
-export default function CartItem(props) {
+export default function CartItem({imageUrl,id,name,quantity}) {
 
-    let [products,] = useContext(ProductContext);
   return (
-    <div><img src={products[props.id-1].imageUrl}/>{products[props.id-1].name}<span>{"    "}{props.count}</span></div>
+    <div className={styles['cart-item']}><img src={imageUrl}/><span>{name}</span>x<span>{quantity}</span></div>
   )
 }
