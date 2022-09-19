@@ -21,8 +21,9 @@ function Slider(props) {
   });
 
   useEffect(()=>{
-    window.addEventListener('resize',() => {
-      setState({...state,width:getWidth,translate:-getWidth})
+    const cleanup = window.addEventListener('resize',() => {
+      setState({...state,width:getWidth,translate:-getWidth});
+      return cleanup;
     })
   },[])
   const stateRef = useRef({});
