@@ -3,9 +3,10 @@ import styles from "./ItemRow.module.css";
 import { useContext } from "react";
 import { CartContext } from "../contexts/cartContext/cartContext";
 
-export default function ItemRow({ id, imageUrl, name, quantity, price }) {
+export default function ItemRow(product) {
+  let { id, imageUrl, name, quantity, price } = product;
   let context = useContext(CartContext);
-  const { clearItem } = context;
+  const { clearItem, removeFromCart, addToCart } = context;
 
   return (
     <div className={styles["wrapper"]}>
@@ -13,7 +14,26 @@ export default function ItemRow({ id, imageUrl, name, quantity, price }) {
         <span>
           <img src={imageUrl} />{" "}
         </span>{" "}
-        <span>{name} </span> <span>{quantity} </span>{" "}
+        <span>{name} </span>{" "}
+        <span>
+          <span
+            className={styles["decrement"]}
+            onClick={() => {
+              removeFromCart(product);
+            }}
+          >
+            -
+          </span>
+          {quantity}{" "}
+          <span
+            className={styles["increment"]}
+            onClick={() => {
+              addToCart(product);
+            }}
+          >
+            +
+          </span>
+        </span>{" "}
         <span>
           {price} {"$"}
         </span>{" "}

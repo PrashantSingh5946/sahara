@@ -6,6 +6,7 @@ export const CartContext = createContext({
   addToCart: () => {},
   togglePopupVisibility: () => {},
   clearItem: (id) => {},
+  removeFromCart: () => {},
   isPopupVisible: false,
   total: 0,
   totalNoOfItems: 0,
@@ -43,6 +44,21 @@ export default function CartContextProvider(props) {
     }
   };
 
+  const removeFromCart = (product) => {
+    if (cartItems.find((currentProduct) => currentProduct.id === product.id)) {
+      if (product.quantity === 1) {
+        clearItem(product.id);
+      } else {
+        let newCartItems = cartItems.map((cartItem) =>
+          cartItem.id === product.id
+            ? { ...cartItem, quantity: cartItem.quantity - 1 }
+            : cartItem
+        );
+        setCartItems([...newCartItems]);
+      }
+    }
+  };
+
   const clearItem = (id) => {
     setCartItems(cartItems.filter((cartItem) => cartItem.id !== id));
   };
@@ -54,6 +70,7 @@ export default function CartContextProvider(props) {
   const value = {
     cartItems,
     addToCart,
+    removeFromCart,
     togglePopupVisibility,
     clearItem,
     isPopupVisible,
