@@ -6,7 +6,6 @@ import { useEffect } from "react";
 export const UserContext = createContext(null);
 
 const userReducer = (state, action) => {
-  console.log("State and action values are");
   let { type, payload } = action;
   if (type == "SET_USER") {
     return payload;
