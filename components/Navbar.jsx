@@ -9,7 +9,7 @@ import CartIcon from "./CartIcon";
 import CartPopup from "./CartPopup";
 
 export default function Navbar() {
-  let [user, setUser] = useContext(UserContext);
+  let { user, setUser } = useContext(UserContext);
 
   let context = useContext(CartContext);
   let { cartItems, isPopupVisible, togglePopupVisibility } = context;
