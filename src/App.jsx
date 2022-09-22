@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import "./styles/styles.css";
 import SignInAndUp from "../components/SignInAndUp";
 import CheckoutPage from "../components/CheckoutPage";
+import CategoryPage from "../components/CategoryPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/shop" element={<Shop />} />
           <Route path="/sign" element={<SignInAndUp />} />
           <Route path="/checkout" element={<CheckoutPage/>}/>
+          <Route path="/shop/:category" element={<CategoryPage/>}/>
         </Routes>
       </div>
     </div>

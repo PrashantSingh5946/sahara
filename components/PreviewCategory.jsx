@@ -1,12 +1,13 @@
 import React from "react";
 import ProductCard from "./ProductCard";
 import styles from "./PreviewCategory.module.css";
+import { Link } from "react-router-dom";
 
 export default function PreviewCategory({ title, items }) {
   return (
     <>
       <div className={styles["title"]}>
-        <h2>{title.toUpperCase()}</h2>
+        <Link to={title.toLowerCase()}><h2>{title.toUpperCase()}</h2></Link>
       </div>
       <div className={styles["container-items"]}>
         {items.map(
