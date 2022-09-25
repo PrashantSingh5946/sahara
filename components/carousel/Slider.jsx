@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import SliderContent from "./SliderContent";
 import Slide from "./Slide";
 
-const getWidth = window.innerWidth;
+
 function Slider(props) {
   const SliderCss = css`
     overflow: hidden;
@@ -15,14 +15,14 @@ function Slider(props) {
     activeIndex: 0,
     transition: transitionTime,
     inTransition: false,
-    width: getWidth,
-    translate: -getWidth,
+    width: window.innerWidth,
+    translate: -window.innerWidth,
     _slides: [3, 0, 1],
   });
 
   useEffect(()=>{
     const cleanup = window.addEventListener('resize',() => {
-      setState({...state,width:getWidth,translate:-getWidth});
+      setState({...state,width:window.innerWidth,translate:-window.innerWidth});
       return cleanup;
     })
   },[])
@@ -91,7 +91,7 @@ function Slider(props) {
       nextRef.current();
     };
     window.onresize = () => {
-      setState({ ...stateRef.current, width: getWidth, translate: -getWidth });
+      setState({ ...stateRef.current, width: window.innerWidth, translate: -getWidth });
     };
     let id = setInterval(play, 5000);
     return () => {
