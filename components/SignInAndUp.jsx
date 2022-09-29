@@ -1,15 +1,26 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   createNewUserWithEmailAndPassword as signUp,
   signInWithValues as signIn,
 } from "../util/firebase-util";
+import { useContext } from "react";
+import { UserContext } from "../contexts/userContext/userContext";
 import styles from "./SignInAndUp.module.css";
+import { useEffect } from "react";
+
 
 const defaultData = {
   email: "",
   password: "",
 };
 export default function SignInAndUp() {
+  let { user, setUser } = useContext(UserContext);
+
+  let fn = useNavigate();
+
+  useEffect(()=>{if(user){fn("/")}},[user])
+
   const [state, setState] = useState(defaultData);
 
   const changeHandler = (event) => {
@@ -24,6 +35,9 @@ export default function SignInAndUp() {
   const signInHandler = () => {
     signIn(state.email, state.password);
   };
+
+
+fn("/shop");
 
   return (
     <div className={styles["card"]}>
