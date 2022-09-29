@@ -27,7 +27,6 @@ let reducer = (state, action) => {
     case actions.SET_IS_POPUP_VISIBLE:
       return { ...state, isPopupVisible: action.payload };
     case actions.SET_TOTAL:
-      console.log(action);
       return { ...state, total: action.payload };
     default:
       return state;
