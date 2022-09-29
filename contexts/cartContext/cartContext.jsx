@@ -1,4 +1,5 @@
 import React from "react";
+import { useReducer } from "react";
 import { createContext, useState, useEffect } from "react";
 
 export const CartContext = createContext({
@@ -12,11 +13,37 @@ export const CartContext = createContext({
   totalNoOfItems: 0,
 });
 
+let actions = {
+  SET_CART_ITEMS: "SET_CART_ITEMS",
+  SET_IS_POPUP_VISIBLE: "SET_IS_POPUP_VISIBLE",
+  SET_TOTAL: "SET_TOTAL",
+  SET_TOTAL_NO_OF_ITEMS: "SET_TOTAL_NO_OF_ITEMS",
+};
+
+let reducer = (state, action) => {
+  switch (action.type) {
+    case actions.SET_CART_ITEMS:
+      return { ...state, cartItems: [...action.payload] };
+    case actions.SET_IS_POPUP_VISIBLE:
+      return { ...state, isPopupVisible: action.payload };
+    case actions.SET_TOTAL:
+      return { ...state, total: action.payload };
+    default:
+      return state;
+  }
+};
+
 export default function CartContextProvider(props) {
   //state
-  const [cartItems, setCartItems] = useState([]);
-  const [isPopupVisible, setIsPopVisible] = useState(false);
-  const [total, setTotal] = useState(0);
+  const [{ cartItems, isPopupVisible,total }, dispatch] = useReducer(reducer, {
+    cartItems: [],
+    isPopupVisible: false,
+    total:0,
+  });
+
+  //const [cartItems, setCartItems] = useState([]);
+  //const [isPopupVisible, setIsPopVisible] = useState(false);
+  //const [total, setTotal] = useState(0);
   const [totalNoOfItems, setTotalNoOfItems] = useState(0);
 
   useEffect(() => {
@@ -29,6 +56,13 @@ export default function CartContextProvider(props) {
     setTotal(total);
     setTotalNoOfItems(totalItems);
   }, [cartItems]);
+
+  //reducer methods
+  const setCartItems = (cartItems) =>
+    dispatch({ type: actions.SET_CART_ITEMS, payload: cartItems });
+  const setIsPopVisible = (isPopupVisible) =>
+    dispatch({ type: actions.SET_IS_POPUP_VISIBLE, payload: isPopupVisible });
+    const setTotal = total => dispatch({type:actions.SET_TOTAL, total});
 
   //methods
   const addToCart = (product) => {
@@ -64,7 +98,7 @@ export default function CartContextProvider(props) {
   };
 
   const togglePopupVisibility = () => {
-    setIsPopVisible((prevState) => !prevState);
+    setIsPopVisible(!isPopupVisible);
   };
 
   const value = {

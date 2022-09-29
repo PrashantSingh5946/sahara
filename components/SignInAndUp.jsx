@@ -3,6 +3,7 @@ import {
   createNewUserWithEmailAndPassword as signUp,
   signInWithValues as signIn,
 } from "../util/firebase-util";
+import styles from "./SignInAndUp.module.css";
 
 const defaultData = {
   email: "",
@@ -25,23 +26,30 @@ export default function SignInAndUp() {
   };
 
   return (
-    <div>
-      <input
-        type={"email"}
-        onChange={changeHandler}
-        name={"email"}
-        required
-        value={state.email}
-      ></input>
-      <input
-        type={"password"}
-        onChange={changeHandler}
-        name={"password"}
-        required
-        value={state.password}
-      ></input>
-      <button onClick={signInHandler}>Login</button>
-      <button onClick={signUpHandler}>SignUp</button>
+    <div className={styles["card"]}>
+      <div>
+        <input
+          type={"email"}
+          onChange={changeHandler}
+          name={"email"}
+          placeholder="Email"
+          required
+          value={state.email}
+        ></input>
+        <input
+          type={"password"}
+          onChange={changeHandler}
+          placeholder="Password"
+          name={"password"}
+          required
+          value={state.password}
+        ></input>
+      </div>
+      <div className={styles["btn-container"]}>
+        <button onClick={signUpHandler}>SignUp</button>
+        <button onClick={signInHandler}>Login</button>
+      </div>
+
     </div>
   );
 }

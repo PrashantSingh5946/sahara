@@ -1,0 +1,60 @@
+.card {
+  align-items: center;
+  color: #303f47;
+  width: 600px;
+  height: 350px;
+  margin: 100px;
+  padding: 40px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 16px 32px 0 rgb(0 0 0);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.card input {
+  background: #97979721;
+  display: block;
+  margin: 25px;
+  border: none;
+  height: 45px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: rgb(249, 249, 249);
+  width: 65%;
+}
+
+.card input::-webkit-input-placeholder {
+  color: white; /*Change the placeholder color*/
+  opacity: 0.5; /*Change the opacity between 0 and 1*/
+}
+
+.card h1 {
+  margin: 0;
+}
+
+.card form {
+  margin-top: 30px;
+}
+
+.card button {
+  margin: 0px 30px 0px 0px;
+}
+
+.btn-container {
+  padding: 0px 25px;
+}
+
+.btn-container button {
+  padding: 13px 26px;
+  text-transform: uppercase;
+  font-weight: 300;
+  border-radius: 5px;
+}
+
+.btn-container button:hover {
+  transform: scale(1.2);
+  transition: cubic-bezier(0.23, 1, 0.32, 1);
+}
