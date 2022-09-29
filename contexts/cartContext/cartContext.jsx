@@ -27,6 +27,7 @@ let reducer = (state, action) => {
     case actions.SET_IS_POPUP_VISIBLE:
       return { ...state, isPopupVisible: action.payload };
     case actions.SET_TOTAL:
+      console.log(action);
       return { ...state, total: action.payload };
     default:
       return state;
@@ -62,7 +63,7 @@ export default function CartContextProvider(props) {
     dispatch({ type: actions.SET_CART_ITEMS, payload: cartItems });
   const setIsPopVisible = (isPopupVisible) =>
     dispatch({ type: actions.SET_IS_POPUP_VISIBLE, payload: isPopupVisible });
-    const setTotal = total => dispatch({type:actions.SET_TOTAL, total});
+    const setTotal = total => dispatch({type:actions.SET_TOTAL, payload:total});
 
   //methods
   const addToCart = (product) => {
