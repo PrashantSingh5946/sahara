@@ -9,7 +9,6 @@ import { UserContext } from "../contexts/userContext/userContext";
 import styles from "./SignInAndUp.module.css";
 import { useEffect } from "react";
 
-
 const defaultData = {
   email: "",
   password: "",
@@ -19,7 +18,11 @@ export default function SignInAndUp() {
 
   let fn = useNavigate();
 
-  useEffect(()=>{if(user){fn("/")}},[user])
+  useEffect(() => {
+    if (user) {
+      fn("/");
+    }
+  }, [user]);
 
   const [state, setState] = useState(defaultData);
 
@@ -35,9 +38,6 @@ export default function SignInAndUp() {
   const signInHandler = () => {
     signIn(state.email, state.password);
   };
-
-
-fn("/shop");
 
   return (
     <div className={styles["card"]}>
@@ -63,7 +63,6 @@ fn("/shop");
         <button onClick={signUpHandler}>SignUp</button>
         <button onClick={signInHandler}>Login</button>
       </div>
-
     </div>
   );
 }
