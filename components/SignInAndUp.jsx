@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   createNewUserWithEmailAndPassword as signUp,
+  signInWithGooglePopup,
   signInWithValues as signIn,
 } from "../util/firebase-util";
 import { useContext } from "react";
@@ -62,6 +63,7 @@ export default function SignInAndUp() {
       <div className={styles["btn-container"]}>
         <button onClick={signUpHandler}>SignUp</button>
         <button onClick={signInHandler}>Login</button>
+        <div onClick={signInWithGooglePopup} className={styles["googleSignIn"]}></div>
       </div>
     </div>
   );
