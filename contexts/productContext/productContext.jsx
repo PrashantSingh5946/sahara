@@ -6,8 +6,8 @@ export const ProductContext = createContext();
 export default function ProductContextProvider(props) {
   const [products, setProducts] = useState([]);
   useEffect(()=>{
-    setProducts(getData());
-    console.log(products);
+    getData().then((products)=>{setProducts(products)});
+    
   },[]);
 
   return (
