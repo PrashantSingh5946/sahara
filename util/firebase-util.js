@@ -1,4 +1,7 @@
 import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore"
+import { SHOP_DATA } from "../db/shop-data.js";
+import { addDoc, collection, getDocs } from "firebase/firestore";
 import { GoogleAuthProvider, signInWithPopup, signInWithRedirect, getAuth, signOut, reauthenticateWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 // Your web app's Firebase configuration
@@ -13,6 +16,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+
 
 //Auth provider could be any of them
 const provider = new GoogleAuthProvider();
@@ -49,7 +54,7 @@ export const createNewUserWithEmailAndPassword = async (email, password) => {
     }
 }
 
-export const signInWithValues = async(email, password) => {
+export const signInWithValues = async (email, password) => {
     try {
         await signInWithEmailAndPassword(auth, email, password);
         alert("Sign in Successful");
@@ -59,3 +64,35 @@ export const signInWithValues = async(email, password) => {
     }
 
 }
+
+
+export const getData = async () => {
+    const db = getFirestore(app);
+    const querySnapshot = await getDocs(collection(db, "categories"));
+    let data = [];
+    querySnapshot.forEach((doc) => {
+        data.push(doc.data());
+    });
+
+    return data;
+}
+
+// ( function addDataToDatabase (){
+
+//     const db = getFirestore(app);
+
+
+
+//     SHOP_DATA.forEach((category)=>{
+//         {
+//             addDoc(collection(db,"categories"),category).then(
+//                 console.log(category)
+//             )
+
+
+//         }
+//     })
+
+
+// })();
+
