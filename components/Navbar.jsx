@@ -4,11 +4,17 @@ import logo from "../src/assets/logo.jpg";
 import { useContext } from "react";
 import { UserContext } from "../contexts/userContext/userContext";
 import { CartContext } from "../contexts/cartContext/cartContext";
-import { logout } from "../util/firebase-util";
+// import { logout } from "../util/firebase-util";
 import CartIcon from "./CartIcon";
 import CartPopup from "./CartPopup";
+import { useSelector, useDispatch } from 'react-redux'
+import { login,logout } from '../store/slices/userReducer'
 
 export default function Navbar() {
+
+  let dispatch = useDispatch();
+
+
   let { user, setUser } = useContext(UserContext);
 
   let context = useContext(CartContext);
