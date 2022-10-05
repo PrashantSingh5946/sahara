@@ -5,17 +5,17 @@ import {
   signInWithGooglePopup,
   signInWithValues as signIn,
 } from "../util/firebase-util";
-import { useContext } from "react";
-import { UserContext } from "../contexts/userContext/userContext";
 import styles from "./SignInAndUp.module.css";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const defaultData = {
   email: "",
   password: "",
 };
 export default function SignInAndUp() {
-  let { user, setUser } = useContext(UserContext);
+
+let user = useSelector((state) => state.user.value);
 
   let fn = useNavigate();
 
