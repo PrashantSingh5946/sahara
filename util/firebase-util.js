@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore"
 import { addDoc, collection, getDocs } from "firebase/firestore";
+import { useSelector, useDispatch } from 'react-redux'
 import { GoogleAuthProvider, signInWithPopup, signInWithRedirect, getAuth, signOut, reauthenticateWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 // Your web app's Firebase configuration
@@ -25,7 +26,7 @@ export const auth = getAuth(app);
 
 export const signInWithGooglePopup = async () => {
     let result = await signInWithPopup(auth, provider);
-    console.log(result);
+
 }
 
 export const signInWithGoogleRedirect = async () => {
@@ -34,7 +35,8 @@ export const signInWithGoogleRedirect = async () => {
 }
 
 export const logout = async () => {
-    await signOut(auth);
+
+    signOut(auth);
 }
 
 export const revalidate = async (user) => {
@@ -75,6 +77,10 @@ export const getData = async () => {
 
     return data;
 }
+
+
+
+
 
 // ( function addDataToDatabase (){
 

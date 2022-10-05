@@ -2,17 +2,22 @@ import { Link } from "react-router-dom";
 import styles from "./Navbar.module.css";
 import logo from "../src/assets/logo.jpg";
 import { useContext } from "react";
-import { UserContext } from "../contexts/userContext/userContext";
 import { CartContext } from "../contexts/cartContext/cartContext";
 import { logout } from "../util/firebase-util";
 import CartIcon from "./CartIcon";
 import CartPopup from "./CartPopup";
+import { useSelector, useDispatch } from 'react-redux'
+import { login,logout as signOut } from '../store/slices/userReducer'
 
 export default function Navbar() {
-  let { user, setUser } = useContext(UserContext);
 
   let context = useContext(CartContext);
   let { cartItems, isPopupVisible, togglePopupVisibility } = context;
+
+
+  let dispatch = useDispatch();
+
+  let user = useSelector((state)=>state.user.value);
 
   return (
     <div className={styles["navbar"]}>
@@ -28,7 +33,7 @@ export default function Navbar() {
           <Link
             onClick={async () => {
               await logout();
-              setUser(null);
+              dispatch(signOut());
             }}
           >
             SIGN OUT

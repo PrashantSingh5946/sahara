@@ -91,7 +91,7 @@ function Slider(props) {
       nextRef.current();
     };
     window.onresize = () => {
-      setState({ ...stateRef.current, width: window.innerWidth, translate: -getWidth });
+      setState({ ...stateRef.current, width: window.innerWidth, translate: -window.innerWidth });
     };
     let id = setInterval(play, 5000);
     return () => {
