@@ -6,7 +6,6 @@ import {
   signInWithValues as signIn,
 } from "../util/firebase-util";
 import styles from "./SignInAndUp.module.css";
-import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 const defaultData = {

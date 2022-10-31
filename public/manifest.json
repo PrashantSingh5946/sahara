@@ -7,10 +7,10 @@
     "scope": "/",
     "start_url": "https://sahara-two.vercel.app/",
     "description": "A simple shopping site",
-    "orientation": "any",
+    "orientation": "landscape",
     "icons": [
         {
-            "src": "https://christine.website/static/img/avatar.png",
+            "src": "logo.jpg",
             "sizes": "1024x1024"
         }
     ]
