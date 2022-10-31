@@ -19,11 +19,7 @@ let user = useSelector((state) => state.user.value);
 
   let fn = useNavigate();
 
-  useEffect(() => {
-    if (user) {
-      fn("/");
-    }
-  }, [user]);
+ if(user){fn("/")};
 
   const [state, setState] = useState(defaultData);
 
