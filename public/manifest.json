@@ -1,16 +1,16 @@
 {
     "name": "Stylish shopping",
     "short_name": "Stylish",
-    "theme_color": "#ffcbe4",
+    "theme_color": "#333",
     "background_color": "#fa99ca",
     "display": "standalone",
     "scope": "/",
-    "start_url": "https://sahara-two.vercel.app/",
+    "start_url": "index.html",
     "description": "A simple shopping site",
     "orientation": "landscape",
     "icons": [
         {
-            "src": "logo.jpg",
+            "src": "1024.png",
             "sizes": "1024x1024"
         }
     ]
