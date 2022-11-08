@@ -7,7 +7,7 @@
     "scope": "/",
     "start_url": "index.html",
     "description": "A simple shopping site",
-    "orientation": "landscape",
+    "orientation": "portrait",
     "icons": [
         {
             "src": "1024.png",
