@@ -1,23 +1,18 @@
 import { Link } from "react-router-dom";
 import styles from "./Navbar.module.css";
 import logo from "../src/assets/logo.jpg";
-import { useContext } from "react";
-import { CartContext } from "../contexts/cartContext/cartContext";
 import { logout } from "../util/firebase-util";
 import CartIcon from "./CartIcon";
 import CartPopup from "./CartPopup";
 import { useSelector, useDispatch } from 'react-redux'
-import { login,logout as signOut } from '../store/slices/userReducer'
+import {SET_IS_POPUP_VISIBLE} from '../store/slices/cartReducer'
 
 export default function Navbar() {
-
-  let context = useContext(CartContext);
-  let { cartItems, isPopupVisible, togglePopupVisibility } = context;
-
 
   let dispatch = useDispatch();
 
   let user = useSelector((state)=>state.user.value);
+  let cartData = useSelector((state)=> state.cart);
 
   return (
     <div className={styles["navbar"]}>
@@ -43,13 +38,13 @@ export default function Navbar() {
         )}
         <Link
           onClick={() => {
-            togglePopupVisibility();
+            dispatch(SET_IS_POPUP_VISIBLE(!cartData.isPopupVisible))
           }}
         >
-          <CartIcon count={cartItems.length} />
+          <CartIcon count={cartData.cartItems.length} />
         </Link>
       </div>
-      {isPopupVisible && <CartPopup />}
+      {cartData.isPopupVisible && <CartPopup />}
     </div>
   );
 }
