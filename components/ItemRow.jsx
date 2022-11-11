@@ -1,12 +1,11 @@
 import React from "react";
 import styles from "./ItemRow.module.css";
-import { useContext } from "react";
-import { CartContext } from "../contexts/cartContext/cartContext";
+import { useDispatch } from 'react-redux'
+import { REMOVE_FROM_CART,CLEAR_ITEM,ADD_CART_ITEM} from "../store/slices/cartReducer";
 
 export default function ItemRow(product) {
   let { id, imageUrl, name, quantity, price } = product;
-  let context = useContext(CartContext);
-  const { clearItem, removeFromCart, addToCart } = context;
+  let dispatch = useDispatch();
 
   return (
     <div className={styles["wrapper"]}>
@@ -19,7 +18,7 @@ export default function ItemRow(product) {
           <span
             className={styles["decrement"]}
             onClick={() => {
-              removeFromCart(product);
+              dispatch(REMOVE_FROM_CART(product));
             }}
           >
             -
@@ -28,7 +27,7 @@ export default function ItemRow(product) {
           <span
             className={styles["increment"]}
             onClick={() => {
-              addToCart(product);
+              dispatch(ADD_CART_ITEM(product));
             }}
           >
             +
@@ -39,7 +38,7 @@ export default function ItemRow(product) {
         </span>{" "}
         <span
           onClick={() => {
-            clearItem(id);
+            dispatch(CLEAR_ITEM(id));
           }}
         >
           Remove{" "}

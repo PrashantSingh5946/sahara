@@ -1,14 +1,14 @@
 import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
-import { CartContext } from "../contexts/cartContext/cartContext";
 import styles from "./ProductCard.module.css";
+import {useDispatch } from 'react-redux'
+import {ADD_CART_ITEM} from '../store/slices/cartReducer'
 
 export default function ProductCard({ product }) {
 
-  let {addToCart,cartItems} = React.useContext(CartContext);
 
   let { imageUrl, name, price } = product;
+
+  let dispatch = useDispatch();
 
   return (
     <div className={styles["productCard"]}>
@@ -16,7 +16,7 @@ export default function ProductCard({ product }) {
       <h3>{name}</h3>
       <button
         onClick={() => {
-          addToCart(product);
+          dispatch(ADD_CART_ITEM(product));
         }}
       >
         Shop Now

@@ -1,13 +1,12 @@
 import React from "react";
 import styles from "./CartPopup.module.css";
-import { useContext } from "react";
-import { CartContext } from "../contexts/cartContext/cartContext";
 import CartItem from "./CartItem";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux'
 
 export default function CartPopup(props) {
-  let context = useContext(CartContext);
-  let {cartItems,total,totalNoOfItems} = context;
+
+  let {cartItems,total,totalNoOfItems} = useSelector((state)=> state.cart);
 
   return (
     <div className={styles["cart-popup"]}>

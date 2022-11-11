@@ -1,11 +1,10 @@
 import React from "react";
 import styles from "./CheckoutPage.module.css";
 import ItemRow from "./ItemRow";
-import { useContext } from "react";
-import { CartContext } from "../contexts/cartContext/cartContext";
+import { useSelector, useDispatch } from 'react-redux'
 export default function CheckoutPage() {
-  let context = useContext(CartContext);
-  let { cartItems } = context;
+  
+  let { cartItems } = useSelector(state => state.cart);
 
   return (
     <div className={styles["container"]}>
